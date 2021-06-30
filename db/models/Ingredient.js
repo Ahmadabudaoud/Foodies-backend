@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       as: "category",
     });
     Ingredient.belongsToMany(models.Recipe, {
-      through: "recipeIngredients",
+      through: "RecipeIngredients",
       foreignKey: "ingredientId",
       as: "recipes",
     });
