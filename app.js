@@ -3,6 +3,7 @@ const cors = require("cors");
 const categoriesRoutes = require("./routes/categories");
 const ingredientsRoutes = require("./routes/ingredients");
 const recipesRoutes = require("./routes/recipes");
+
 const app = express();
 
 app.use(express.json());

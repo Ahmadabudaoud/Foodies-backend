@@ -1,4 +1,4 @@
-const { Recipe, Ingredient } = require("../db/models");
+const { Recipe, Ingredient, RecipeIngredient } = require("../db/models");
 
 exports.getRecipes = async (req, res, next) => {
   try {
@@ -7,7 +7,9 @@ exports.getRecipes = async (req, res, next) => {
       include: {
         model: Ingredient,
         as: "ingredients",
-        attributes: ["id", "name", "image"],
+        through: {
+          model: RecipeIngredient,
+        },
       },
     });
     res.json(recipes);
