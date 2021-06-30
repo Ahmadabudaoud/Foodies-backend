@@ -2,6 +2,9 @@ const { Category, Ingredient } = require("../db/models/");
 
 exports.createCategory = async (req, res, next) => {
   try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`;
+    }
     const newCategory = await Category.create(req.body);
     res.status(201).json(newCategory);
   } catch (error) {

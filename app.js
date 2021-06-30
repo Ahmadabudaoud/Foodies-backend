@@ -8,4 +8,5 @@ app.use(express.json());
 app.use(cors());
 app.use("/categories", categoriesRoutes);
 app.use("/ingredients", ingredientsRoutes);
+app.use("/media", express.static("media"));
 app.listen(8000);
