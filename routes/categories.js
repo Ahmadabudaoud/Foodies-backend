@@ -5,6 +5,7 @@ const {
   createCategory,
   fetchCategory,
 } = require("../controllers/categoriesController");
+const { createIngredient } = require("../controllers/ingredientsController");
 const upload = require("../middleware/multer");
 
 const router = express.Router();
@@ -20,6 +21,11 @@ router.param("categoryId", async (req, res, next, categoryId) => {
   }
 });
 
+router.post(
+  "/:categoryId/ingredients",
+  upload.single("image"),
+  createIngredient
+);
 router.post("/", upload.single("image"), createCategory);
 router.get("/", getCategories);
 

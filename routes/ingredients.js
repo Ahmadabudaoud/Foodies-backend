@@ -6,5 +6,5 @@ const {
 
 const router = express.Router();
 router.get("/", getIngredients);
-router.post("/", createIngredient);
+// router.post("/", createIngredient);
 module.exports = router;
