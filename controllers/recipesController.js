@@ -21,6 +21,11 @@ exports.getRecipes = async (req, res, next) => {
 exports.createRecipe = async (req, res, next) => {
   try {
     const newRecipe = await Recipe.create(req.body);
+    const mappedIngredients = req.body.ingredients.map((ingredient) => ({
+      recipeId: newRecipe.id,
+      ingredientId: ingredient,
+    }));
+    const row = await RecipeIngredient.bulkCreate(mappedIngredients);
     res.status(201).json(newRecipe);
   } catch (error) {
     next(error);
